@@ -10,8 +10,9 @@ require('dotenv').config()
 const PORT = process.env.PORT
 const io = new Server(server, {
   cors: {
-    origin: "https://realtime-app.netlify.app/",
-    methods: ["GET", "POST"],
+    origin: process.env.CLIENT_URL,
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
   },
 });
 const { addUser, getUser, removeUser, getUsersInRoom } = require("./users");
