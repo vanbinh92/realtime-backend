@@ -6,7 +6,8 @@ const { Server } = require("socket.io");
 app.use(cors());
 
 const server = http.createServer(app);
-
+require('dotenv').config()
+const PORT = process.env.PORT
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -65,6 +66,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(8000, () => {
-  console.log("listening on *:3000");
+server.listen(PORT, () => {
+  console.log(`running ${PORT}`);
 });
